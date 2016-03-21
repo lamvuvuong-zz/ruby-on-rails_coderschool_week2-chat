@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Friendships</h1>
+
+<table class="table">
+  <thead class="thead thead-default">
+    <tr>
+      <th>Friend</th>
+      <th>Option</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friendships.each do |friendship| %>
+      <tr>
+        <% @user = User.find_by_id(friendship.user_id) %>
+        <td><%= @user.name %></td>
+        <td><%= link_to "Agree", edit_friendship_path(friendship.id, s_id: @user.id, r_id: session[:user_id], agree: 1) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

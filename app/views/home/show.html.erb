@@ -1,0 +1,26 @@
+<h1>Friend</h1>
+
+<table class="table">
+	<thead class="thead thead-default">
+		<tr>
+			<th>Name</th>
+			<th>New message</th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+<% @friends.each do |friend| %>
+	<% if (friend.id != session[:user_id]) %>
+		 <tr>
+	<% else %>
+		<tr style="display: none">
+	<% end %>
+	<% @user = User.find_by_id(friend.id) %>
+		 	<td><%= @user.name %></td>
+		 	<td><%= link_to "New message", new_message_path(r_id: friend.id, s_id: session[:user_id])  %></td>
+		 </tr>
+<% end %>
+	</tbody>
+
+</table>

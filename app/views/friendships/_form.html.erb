@@ -1,0 +1,19 @@
+<%= simple_form_for(@friendship) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	You want to send a friend invitation
+<input type="hidden" name="friendship[user_id]" id="friendship_user_id" value="<%= params[:s_id] %>">
+<input type="hidden" name="friendship[friend_id]" id="friendship_friend_id" value="<%= params[:r_id] %>">
+	<% if (params[:agree] == '1') %>
+<input type="hidden" name="friendship[option]" id="friendship_option" value="2">
+<% else %>
+<input type="hidden" name="friendship[option]" id="friendship_option" value="1">
+<% end %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>New messages</h1>
+
+<%= simple_form_for @message do |f| %>
+	<%= f.input :title %>
+	<%= f.input :body %>
+	<input type="hidden" name="message[sender_id]" id="message_sender_id" value="<%= params[:s_id] %>">
+	<input type="hidden" name="message[recipient_id]" id="message_recipient_id" value="<%= params[:r_id] %>">
+	<%= f.submit %>
+<% end %>

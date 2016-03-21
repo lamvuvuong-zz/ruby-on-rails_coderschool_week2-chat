@@ -1,0 +1,22 @@
+<h1>Sent mail</h1>
+
+<table class="table">
+	<thead class="thead thead-default">
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+			<th>Recipient</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @messages.each do |message| %>
+		<tr>
+			<% @user_name = User.find_by(id: message.recipient_id) %>
+		 	<td><%= message.title %></td>
+		 	<td><%= message.body %></td>
+		 	<td><%= @user_name.name %></td>
+		 </tr>
+<% end %>
+	</tbody>
+
+</table>
